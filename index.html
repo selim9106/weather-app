@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/style/style.css"
+  />
+    <title>Weather App</title>
+  </head>
+  <body>
+
+    <header class="header">
+        <nav class="header__nav">
+            <ol class="header__nav__list">
+                <li class="header__nav__list__item" id="location"></li>
+                <li class="header__nav__list__item">
+                    <input class="header__nav__list__item__searchfield" id="searchfield" type="text" placeholder="City">
+                </li>
+                <li class="header__nav__list__item">
+                    <button class="header__nav__list__item__submit" id="submit" type="submit" placeholder="go">GO</button>
+                </li>
+                <!-- points -->
+            </ol>
+        </nav>
+
+    </header>
+
+        <!------------------------------------- burger menu ------------------------------------>
+    <aside class="aside">
+
+        <a id="closebgmenu" href="#" class="closebgmenu">×</a>
+        <ul class="aside__menu">
+            
+            <li class="aside__menu__item"><a href="#">Home</a></li>
+            <li class="aside__menu__item"><a href="#">Share  <iconify-icon inline icon="ci:share"></iconify-icon></a></li>
+            <li class="aside__menu__item"><a href="#">Settings  <iconify-icon inline icon="ci:settings"></iconify-icon></a></li>
+            <li class="aside__menu__item"><a href="#">About us</a></li>
+
+        </ul>
+    </aside>
+
+    <!------------------------------------- burger Button ------------------------------------>
+    <a href="#" id="bgmenu" class="bgmenu">
+        <span class="burger-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </a>
+
+    <main class="main">
+
+        <article class="main__article">
+            <a href="#" class="main__article__slider main__article__slider--left"></a>
+            <a href="#" class="main__article__slider main__article__slider--right"></a>
+
+            <!--  -->
+            <section class="main__article__section main__article__section--city">
+                <h1 class="section__city" id="city">City</h1>
+                <nav class ="section__nav">
+                    <ol class="section__nav__buttons">
+                        <li class="section__nav__buttons__btn"></li>
+                        <li class="section__nav__buttons__btn"></li>
+                        <li class="section__nav__buttons__btn"></li>
+                        <li class="section__nav__buttons__btn"></li>
+                    </ol>
+                </nav>
+            </section>
+
+
+            <section class="main__article__section main__article__section--todaysweather">
+                <p class="main__article__section__paragraph main__article__section__paragraph--day">Thursday 18 Aug</h2>
+                <p class="main__article__section__paragraph main__article__section__paragraph--hour">03:04 PM</p>
+
+                <figure class="main__article__section__icon">
+
+                </figure>
+
+                <div class="main__article__section__temp">
+                    <p class="main__article__section__temp__degrees">30<span class="degreeicon" id="degreeiconbig">&deg;</span></p>
+                    <button class="main__article__section__temp__toggle" id="toggletemp">&deg;C</button>
+                </div>
+
+
+            </section>
+
+
+        </article>
+
+    </main>
+
+
+    <script src="assets/js/script.js"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.0-beta.3/iconify-icon.min.js"></script>
+
+  </body>
+</html>

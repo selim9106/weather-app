@@ -1,0 +1,28 @@
+@mixin for-phone {
+    @media (max-width: 599px) { @content; }
+  }
+  @mixin for-tablet-portrait {
+    @media (min-width: 600px) { @content; }
+  }
+  @mixin for-tablet-landscape {
+    @media (min-width: 900px) { @content; }
+  }
+  @mixin for-desktop {
+    @media (min-width: 1200px) { @content; }
+  }
+  @mixin for-big-desktop {
+    @media (min-width: 1800px) { @content; }
+  }
+
+
+
+//   .header-title {  
+//     font-size: 2rem;  
+  
+//     @include for-phone-only {    
+//        font-size: 1rem; 
+//     }
+//  }
+
+
+// https://itnext.io/writing-media-queries-with-sass-mixins-3ea591ea3ea4#:~:text=Sass%20mixins%20give%20us%20the,a%20whole%20lot%20of%20sense!
