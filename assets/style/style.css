@@ -5,6 +5,7 @@
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
+@import url("https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Play:wght@400;700&family=Rajdhani:wght@300;400;500;600;700&family=Saira+Semi+Condensed:wght@100;200;300;400;500;600;700;800&display=swap");
 html {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
@@ -326,11 +327,12 @@ template {
   --link-hover-color: #0a58ca;
   --generic-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
   --bgcolor-gradient: linear-gradient(-20deg, #757f9a, #d7dde8);
-  --font-family-title: "Josefin Slab", sans-serif;
+  --font-family-title: "Merriweather Sans", sans-serif;
+  --font-family-text: "Play", sans-serif;
+  --font-family-numbers: "Rajdhani", sans-serif;
   --font-family-main: "Open Sans", sans-serif;
   --font-family-alt: "Nunito", sans-serif;
-  --font-family-quote: "Allura";
-  --font-family-stock:"Shalimar";
+  --font-family-stock: "Saira Semi Condensed", sans-serif;
   --font-size-body: 1rem;
   --fontweight-main: 400;
   --line-height: 1.5;
@@ -351,10 +353,19 @@ template {
   box-sizing: content-box;
 }
 
+body {
+  background-image: url("/weather-app/assets/images/nicolas-lesoil-eJlVWPNExY0-unsplash.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
+  height: 100vh;
+}
+
 .bgmenu {
-  position: fixed;
+  position: absolute;
   top: 1rem;
   left: 1.3rem;
+  z-index: 10;
 }
 @media (min-width: 1200px) {
   .bgmenu {
@@ -375,7 +386,7 @@ template {
   height: 100%;
   width: 15rem;
   position: fixed;
-  z-index: 1;
+  z-index: 9;
   top: 0;
   left: -15rem;
   background-color: rgba(227, 228, 228, 0.8156862745);
@@ -434,4 +445,289 @@ template {
 }
 .aside.asidemobile {
   left: 0;
+}
+
+.header {
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}
+.header__nav {
+  margin: auto;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 95%;
+  padding: 0 0.6rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.header__nav__list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  align-items: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  list-style-type: none;
+  padding: 0.3rem;
+  background-color: rgba(240, 255, 255, 0.288);
+  border-radius: 20px;
+}
+.header__nav__list__item {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.header__nav__list__item#location {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  content: url("https://api.iconify.design/ic/outline-place.svg?color=white&width=30&height=20");
+  margin: 0.01rem 0.04rem;
+}
+.header__nav__list__item__searchfield {
+  background: none;
+  height: 100%;
+  border: none;
+  width: 8rem;
+  font-family: var(--font-family-text);
+  font-weight: 400;
+  color: white;
+}
+.header__nav__list__item__searchfield:focus {
+  outline: none;
+  background: none;
+  border: none;
+}
+.header__nav__list__item__searchfield::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.548);
+}
+.header__nav__list__item__searchfield:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.548);
+}
+.header__nav__list__item__searchfield::placeholder {
+  color: rgba(255, 255, 255, 0.548);
+}
+.header__nav__list__item:last-child {
+  padding-top: 2px;
+}
+.header__nav__list__item__submit {
+  background: url("https://api.iconify.design/fa/search.svg?color=white&width=30&height=30") no-repeat center center/contain;
+  border: none;
+  outline: none;
+  height: 15px;
+  width: 15px;
+}
+
+.main {
+  width: 100%;
+  display: block;
+}
+.main__article {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+.main__article__section {
+  width: 90%;
+  margin: auto;
+  border: 2px solid yellow;
+}
+.main__article__section .section__city {
+  color: var(--color-white);
+  font-weight: 600;
+  font-family: var(--font-family-text);
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+  padding: 0.2rem 0.5rem 0;
+  border: 2px solid green;
+}
+.main__article__section .section__nav {
+  width: 100%;
+  margin: auto;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  border: 2px solid purple;
+}
+.main__article__section .section__nav__buttons {
+  padding: 0 1rem 0;
+  margin: 0 auto;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border: 2px solid plum;
+}
+.main__article__section .section__nav__buttons__btn {
+  display: inline-block;
+  width: 0.4rem;
+  height: 0.4rem;
+  background-color: var(--color-white);
+  background-clip: content-box;
+  border: 0.25rem solid transparent;
+  border-radius: 50%;
+  font-size: 0;
+}
+.main__article__section__time {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto;
+  justify-content: center;
+}
+.main__article__section__time .section__time__item {
+  font-family: var(--font-family-stock);
+  font-weight: 400;
+  font-size: 1.2rem;
+  color: var(--color-white);
+  margin: 0 auto;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.main__article__section__time .section__time__item--hour {
+  font-size: 1rem;
+  padding: 0.1rem;
+}
+.main__article__section__todayweather {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  filter: drop-shadow(0.1rem, 0.1rem, 0.1rem, 0.1rem);
+}
+.main__article__section__todayweather .todayweather__temp {
+  margin: 1rem 0.2rem 0 1rem;
+  padding: 2rem 0 0;
+  display: flex;
+  flex-direction: row;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  justify-content: flex-start;
+  align-items: center;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  border: 2px solid orangered;
+}
+.main__article__section__todayweather .todayweather__temp__degrees {
+  font-family: var(--font-family-numbers);
+  font-size: 9rem;
+  margin: 0;
+  align-self: flex-end;
+  line-height: 0.8;
+  color: var(--color-white);
+  font-weight: 600;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  border: 2px solid pink;
+}
+.main__article__section__todayweather .todayweather__temp__degrees .degreeicon {
+  font-size: 5rem;
+  font-weight: 400;
+  vertical-align: top;
+}
+.main__article__section__todayweather .todayweather__temp__toggle {
+  border: 1.2px solid;
+  font-family: var(--font-family-text);
+  font-size: 20px;
+  font-weight: 500;
+  padding: 0.1rem;
+  height: 30px;
+  width: 30px;
+  background: rgba(255, 255, 255, 0.174);
+  border-radius: 50%;
+  color: #fff;
+  align-self: flex-start;
+  transition: background 1s ease-in-out, border 0.2s ease-in-out;
+}
+.main__article__section__todayweather .todayweather__temp__toggle:hover {
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  background-color: rgba(255, 255, 255, 0.315);
+}
+.main__article__section__todayweather .todayweather__temp__toggle:active {
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  background-color: rgba(255, 255, 255, 0.42);
+}
+.main__article__section__todayweather .todayweather__picture {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  justify-content: flex-start;
+  align-items: center;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  border: 2px solid orange;
+}
+.main__article__section__todayweather .todayweather__picture__icon {
+  margin: 0;
+}
+.main__article__section__todayweather .todayweather__picture__icon img {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: auto;
+}
+.main__article__section__todayweather .todayweather__picture__caption {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-family: var(--font-family-text);
+  font-size: 20px;
+  color: var(--color-white);
+  text-align: center;
+}
+.main__article__section__list {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 0;
+  align-items: center;
+  border: 2px solid brown;
+}
+.main__article__section__list__blockday {
+  margin: 0.3rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.324);
+  border-radius: 3rem;
+  width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  filter: drop-shadow(0.2rem 0.2rem 1rem rgb(86, 86, 86));
+}
+.main__article__section__list__blockday .blockday__title {
+  font-family: var(--font-family-text);
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  line-height: 1;
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: var(--color-white);
+  border: 2px solid red;
+}
+.main__article__section__list__blockday .blockday__icons {
+  font-size: 2rem;
 }/*# sourceMappingURL=style.css.map */

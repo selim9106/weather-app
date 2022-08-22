@@ -2,13 +2,22 @@
     box-sizing: content-box;
 }
 
+body {
+    background-image: url('/weather-app/assets/images/nicolas-lesoil-eJlVWPNExY0-unsplash.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+    height: 100vh;
+}
+
 
 //-------------------------------------- Burgermenu----------------------------
 
 .bgmenu {
-    position: fixed;
+    position: absolute;
     top:1rem;
     left: 1.3rem;
+    z-index: 10;
 
     @include for-desktop {
         display:none;
@@ -33,7 +42,7 @@
     height:100%;
     width: 15rem;
     position:fixed;
-    z-index: 1;
+    z-index: 9;
     top: 0;
     left: -15rem;
     background-color: #e3e4e4d0;
@@ -102,4 +111,327 @@
 
 
 
-// ------------------------------------------------------------------------------------
+// ----------------------------------- content -----------------------------------------------
+
+.header {
+    position:relative;
+    width: 100%;
+    z-index: 1;
+
+    &__nav {
+        margin: auto;
+        height:fit-content;
+        width:95%;
+        padding: 0 0.6rem;
+        display:flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        // border: 2px solid blue;
+
+
+        &__list {
+            display:flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: flex-end;
+            align-items: center;
+            width: fit-content;
+            list-style-type: none;
+            padding:0.3rem;
+            background-color: rgba(240, 255, 255, 0.288);
+            border-radius: 20px;
+
+            &__item {
+
+                width: fit-content;
+
+                &#location {
+                    height:fit-content;
+                    content: url('https://api.iconify.design/ic/outline-place.svg?color=white&width=30&height=20');
+                    margin: 0.01rem 0.04rem;
+                };
+
+                &__searchfield {
+                    background: none;
+                    height: 100%;
+                    border: none;
+                    width: 8rem;
+                    font-family: var(--font-family-text);
+                    font-weight: 400;
+                    color: white;
+
+                    &:focus {
+                        outline: none;
+                        background: none;
+                        border: none;
+                    }
+                    &::placeholder {
+                        color:rgba(255, 255, 255, 0.548);
+                    }
+
+                };
+
+                &:last-child {
+                    padding-top:2px;
+                };
+
+                &__submit {
+                    background: url('https://api.iconify.design/fa/search.svg?color=white&width=30&height=30') no-repeat center center / contain;
+                    border: none;
+                    outline: none;
+                    height:15px;
+                    width:15px;
+                  
+                };
+            };
+        };
+    };
+};
+
+
+
+
+// ----------------------------------Main-content-----------------------------------
+
+.main {
+    width: 100%;
+    display:block;
+
+    &__article {
+        width: 100%;
+        display:flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        
+        &__section {
+            width: 90%;
+            margin: auto;
+            border: 2px solid yellow;
+
+            .section__city {
+                color: var(--color-white);
+                font-weight: 600;
+                font-family: var(--font-family-text);
+                width: fit-content;
+                margin:auto;
+                padding: 0.2rem 0.5rem 0;
+                border:2px solid green;
+
+            };
+
+
+            // ----------------------------------carousel buttons-----------------------------------
+            .section__nav {
+                width: 100%;
+                margin:  auto;
+                height: fit-content;
+                border: 2px solid purple;
+                
+                &__buttons {
+                    padding:0 1rem 0;
+                    margin:0 auto;
+                    width:fit-content;
+                    border: 2px solid plum;
+
+                    &__btn {
+                        display: inline-block;
+                        width: 0.4rem;
+                        height: 0.4rem;
+                        background-color: var(--color-white);
+                        background-clip: content-box;
+                        border: 0.25rem solid transparent;
+                        border-radius: 50%;
+                        font-size: 0;
+                        // transition: transform 0.1s;
+                    }
+                };
+
+            };
+            // ----------------------------------today's weather-----------------------------------
+
+            // &--todaysweather {
+            //     margin-bottom: 1rem;
+    
+            // }
+
+
+            &__time {
+                width:fit-content;
+                margin: 0 auto;
+                justify-content: center;
+                
+
+                .section__time__item {
+                    font-family: var(--font-family-stock);
+                    font-weight: 400;
+                    font-size: 1.2rem;
+                    color: var(--color-white);
+                    margin: 0 auto;
+                    width:fit-content;
+
+                    &--hour {
+                        font-size: 1rem;
+                        padding:0.1rem;
+
+                    };
+                };
+            };
+
+            &__todayweather {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                filter: drop-shadow(0.1rem, 0.1rem, 0.1rem, 0.1rem);
+
+                .todayweather__temp {
+
+                    // display:inline-block;
+                    margin: 1rem 0.2rem 0 1rem;
+                    padding: 2rem 0 0;
+                    display:flex;
+                    flex-direction: row;
+                    width:fit-content;
+                    justify-content:flex-start;
+                    align-items: center;
+                    height:fit-content;
+                    border: 2px solid orangered;
+                
+                    &__degrees {
+                        font-family: var(--font-family-numbers);
+                        font-size: 9rem;
+                        margin:0;
+                        align-self: flex-end;
+                        line-height: 0.8;
+                        color: var(--color-white);
+                        font-weight:600;
+                        width: fit-content;
+                        height:fit-content;
+                        border: 2px solid pink;
+    
+                        .degreeicon {
+                            font-size: 5rem;
+                            font-weight: 400;
+                            // line-height: inherit;
+                            vertical-align: top;
+                        };
+    
+                        
+                    };
+    
+                    &__toggle {
+                        border: 1.2px solid;
+                        font-family: var(--font-family-text);
+                        font-size: 20px;
+                        font-weight: 500;
+                        padding:0.1rem;
+                        height: 30px;
+                        width: 30px;
+                        background: rgba(255, 255, 255, 0.174);
+                        border-radius: 50%;
+                        color: #fff;
+                        align-self: flex-start;
+                        
+                        transition: background 1s ease-in-out, border 0.2s ease-in-out;
+                        // &.on {
+                        //     background: rgba(255, 255, 255, 0.854);
+                        // };
+                        &:hover {
+                            border: 1px solid rgba(255,255,255,0.75);
+                            background-color: rgba(255, 255, 255, 0.315)
+                        };
+                        &:active {
+                            border: 1px solid rgba(255,255,255,0.75);
+                            background-color: rgba(255, 255, 255, 0.42)
+                        };
+                        
+
+                    };
+    
+                };
+    
+                .todayweather__picture {
+                    display:flex;
+                    flex-direction: column;
+                    flex-wrap: nowrap;
+                    width:fit-content;
+                    justify-content: flex-start;
+                    align-items: center;
+                    height: fit-content;
+                    border: 2px solid orange;
+    
+                    &__icon {
+                        margin: 0;
+
+                        img {
+                            width:fit-content;
+                            height:auto;
+                        };
+                    };
+    
+                    &__caption {
+                        width:fit-content;
+                        font-family: var(--font-family-text);
+                        font-size: 20px;
+                        color: var(--color-white);
+                        text-align: center;
+
+
+                    };
+
+                };
+            
+
+
+
+            };
+
+
+            &__list {
+                list-style-type: none;
+                display:flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                padding: 0;
+                align-items: center;
+                border: 2px solid brown;
+
+                &__blockday {
+                    
+                    margin: 0.3rem;
+                    display:flex;
+                    flex-direction: row;
+                    flex-wrap:nowrap;
+                    justify-content: space-around;
+                    align-items:center;
+                    background: rgba(255, 255, 255, 0.324);
+                    border-radius: 3rem;
+                    width: 100%;
+                    height:fit-content;
+                    filter: drop-shadow(0.2rem 0.2rem 1rem rgb(86, 86, 86));
+
+                    .blockday__title {
+                        font-family: var(--font-family-text);
+                        height:fit-content;
+                        line-height:1;
+                        font-size: 2.2rem;
+                        font-weight: 300;
+                        color: var(--color-white);
+                        border: 2px solid red;
+                        
+
+                    };
+
+                    .blockday__icons {
+                        font-size: 2rem;
+
+                    };
+                };
+
+            };
+        };
+    
+
+    };
+
+};

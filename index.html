@@ -10,83 +10,185 @@
   </head>
   <body>
 
+
+
+            <!------------------------------------- burger menu ------------------------------------>
+            <aside class="aside">
+
+                <a id="closebgmenu" href="#" class="closebgmenu">×</a>
+                <ul class="aside__menu">
+                    
+                    <li class="aside__menu__item"><a href="#">Home</a></li>
+                    <li class="aside__menu__item"><a href="#">Share  <iconify-icon inline icon="ci:share"></iconify-icon></a></li>
+                    <li class="aside__menu__item"><a href="#">Settings  <iconify-icon inline icon="ci:settings"></iconify-icon></a></li>
+                    <li class="aside__menu__item"><a href="#">About us</a></li>
+        
+                </ul>
+            </aside>
+        
+            <!------------------------------------- burger Button ------------------------------------>
+            <a href="#" id="bgmenu" class="bgmenu">
+                <span class="burger-icon">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </span>
+              </a>
+
+
     <header class="header">
         <nav class="header__nav">
-            <ol class="header__nav__list">
-                <li class="header__nav__list__item" id="location"></li>
-                <li class="header__nav__list__item">
-                    <input class="header__nav__list__item__searchfield" id="searchfield" type="text" placeholder="City">
-                </li>
-                <li class="header__nav__list__item">
-                    <button class="header__nav__list__item__submit" id="submit" type="submit" placeholder="go">GO</button>
-                </li>
-                <!-- points -->
-            </ol>
+            <form>
+                <ul class="header__nav__list">
+                    
+                    <li class="header__nav__list__item" id="location"></li>
+                    <li class="header__nav__list__item">
+                        <input class="header__nav__list__item__searchfield" id="searchfield" type="text" placeholder="City">
+                    </li>
+                    <li class="header__nav__list__item">
+                        <button class="header__nav__list__item__submit" id="submit" type="submit" placeholder="go"></button>
+                    </li>
+                    
+                </ul>
+            </form>
         </nav>
 
     </header>
 
-        <!------------------------------------- burger menu ------------------------------------>
-    <aside class="aside">
 
-        <a id="closebgmenu" href="#" class="closebgmenu">×</a>
-        <ul class="aside__menu">
-            
-            <li class="aside__menu__item"><a href="#">Home</a></li>
-            <li class="aside__menu__item"><a href="#">Share  <iconify-icon inline icon="ci:share"></iconify-icon></a></li>
-            <li class="aside__menu__item"><a href="#">Settings  <iconify-icon inline icon="ci:settings"></iconify-icon></a></li>
-            <li class="aside__menu__item"><a href="#">About us</a></li>
 
-        </ul>
-    </aside>
 
-    <!------------------------------------- burger Button ------------------------------------>
-    <a href="#" id="bgmenu" class="bgmenu">
-        <span class="burger-icon">
-          <span></span>
-          <span></span>
-          <span></span>
-        </span>
-      </a>
 
+      <!------------------------------- Maincontent ---------------------------->
     <main class="main">
-
+ 
+        <!-----------------------template-string--------------------
         <article class="main__article">
             <a href="#" class="main__article__slider main__article__slider--left"></a>
             <a href="#" class="main__article__slider main__article__slider--right"></a>
 
-            <!--  -->
+            ------------------------ carousel ---------------------
             <section class="main__article__section main__article__section--city">
-                <h1 class="section__city" id="city">City</h1>
+                <h1 class="section__city" id="city">Charleroi</h1>
                 <nav class ="section__nav">
-                    <ol class="section__nav__buttons">
+                    <ul class="section__nav__buttons">
                         <li class="section__nav__buttons__btn"></li>
                         <li class="section__nav__buttons__btn"></li>
                         <li class="section__nav__buttons__btn"></li>
                         <li class="section__nav__buttons__btn"></li>
-                    </ol>
+                    </ul>
                 </nav>
             </section>
 
-
+            ------------------------ Today's weather ---------------------
             <section class="main__article__section main__article__section--todaysweather">
-                <p class="main__article__section__paragraph main__article__section__paragraph--day">Thursday 18 Aug</h2>
-                <p class="main__article__section__paragraph main__article__section__paragraph--hour">03:04 PM</p>
-
-                <figure class="main__article__section__icon">
-
-                </figure>
-
-                <div class="main__article__section__temp">
-                    <p class="main__article__section__temp__degrees">30<span class="degreeicon" id="degreeiconbig">&deg;</span></p>
-                    <button class="main__article__section__temp__toggle" id="toggletemp">&deg;C</button>
+                <div class="main__article__section__time">
+                    <h2 class="section__time__item section__time__item--day" id="date">Thursday 18 Aug</h2>
+                    <h3 class="section__time__item section__time__item--hour" id="time">03:04 PM</h3>
                 </div>
 
+                <section class="main__article__section__todayweather">
+
+                    <div class="todayweather__temp">
+                        <p class="todayweather__temp__degrees"><span class="degreevalue"></span><span class="degreeicon" id="degreeiconbig">&deg;</span></p>
+                        <button class="todayweather__temp__toggle" id="toggleunit">&deg;C</button>
+                    </div>
+
+                    <div class="todayweather__picture">
+
+                        <figure class="todayweather__picture__icon">
+                            <iconify-icon icon="ion:partly-sunny-sharp" style="color: white;" width="80" height="80"></conify-icon>
+                        </figure>
+                        <figcaption class="todayweather__picture__caption">20&deg;/27&deg; Feels like 30&deg;</figcaption>
+
+                    </div>
+                </section>
+
+                
 
             </section>
 
 
+
+            --------------------- weather forecasts -------------------------
+
+            <section class="main__article__section main__article__section--forecast">
+                <ul class="main__article__section__list">
+                    <li class="main__article__section__list__blockday">
+                        <h5 class="blockday__title">Friday</h5>
+                        <div class="blockday__icons">
+                            <iconify-icon inline icon="fluent:weather-drizzle-24-filled" style="color: white;"></iconify-icon> <iconify-icon inline icon="fluent:weather-moon-48-filled" style="color: white;"></iconify-icon>
+                        </div>
+                        <div class="blockday__rain">
+                            <p class="blockday__rain__content">
+                            <iconify-icon inline icon="fluent:drop-24-filled" style="color: white;"></iconify-icon> 65%
+                            </p>
+                        </div>
+                        <h6 class="blockday__minmaxtemp">20°/27°</h6>
+
+                    </li>
+                    <li class="main__article__section__list__blockday">
+                        <h5 class="blockday__title">Friday</h5>
+                        <div class="blockday__icons">
+                            <iconify-icon inline icon="fluent:weather-drizzle-24-filled" style="color: white;"></iconify-icon> <iconify-icon inline icon="fluent:weather-moon-48-filled" style="color: white;"></iconify-icon>
+                        </div>
+                        <div class="blockday__rain">
+                            <p class="blockday__rain__content">
+                            <iconify-icon inline icon="fluent:drop-24-filled" style="color: white;"></iconify-icon> 65%
+                            </p>
+                        </div>
+                        <h6 class="blockday__minmaxtemp">20°/27°</h6>
+
+                    </li>
+                    <li class="main__article__section__list__blockday">
+                        <h5 class="blockday__title">Friday</h5>
+                        <div class="blockday__icons">
+                            <iconify-icon inline icon="fluent:weather-drizzle-24-filled" style="color: white;"></iconify-icon> <iconify-icon inline icon="fluent:weather-moon-48-filled" style="color: white;"></iconify-icon>
+                        </div>
+                        <div class="blockday__rain">
+                            <p class="blockday__rain__content">
+                            <iconify-icon inline icon="fluent:drop-24-filled" style="color: white;"></iconify-icon> 65%
+                            </p>
+                        </div>
+                        <h6 class="blockday__minmaxtemp">20°/27°</h6>
+
+                    </li>
+                    <li class="main__article__section__list__blockday">
+                        <h5 class="blockday__title">Friday</h5>
+                        <div class="blockday__icons">
+                            <iconify-icon inline icon="fluent:weather-drizzle-24-filled" style="color: white;"></iconify-icon> <iconify-icon inline icon="fluent:weather-moon-48-filled" style="color: white;"></iconify-icon>
+                        </div>
+                        <div class="blockday__rain">
+                            <p class="blockday__rain__content">
+                            <iconify-icon inline icon="fluent:drop-24-filled" style="color: white;"></iconify-icon> 65%
+                            </p>
+                        </div>
+                        <h6 class="blockday__minmaxtemp">20°/27°</h6>
+
+                    </li>
+                    <li class="main__article__section__list__blockday">
+                        <h5 class="blockday__title">Friday</h5>
+                        <div class="blockday__icons">
+                            <iconify-icon inline icon="fluent:weather-drizzle-24-filled" style="color: white;"></iconify-icon> <iconify-icon inline icon="fluent:weather-moon-48-filled" style="color: white;"></iconify-icon>
+                        </div>
+                        <div class="blockday__rain">
+                            <p class="blockday__rain__content">
+                            <iconify-icon inline icon="fluent:drop-24-filled" style="color: white;"></iconify-icon> 65%
+                            </p>
+                        </div>
+                        <h6 class="blockday__minmaxtemp">20°/27°</h6>
+
+                    </li>
+
+                </ul>
+
+
+            </section>
+
+        
         </article>
+
+        --->
 
     </main>
 
