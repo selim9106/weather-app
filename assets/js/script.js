@@ -154,6 +154,7 @@ function initApp() {
     
 
     submit.addEventListener("submit", function(e) {
+        // la ligne ci dessout demande a ne pas recharger la page à chaque seconde
         e.preventDefault();
         let city = searchField.value;
         console.log(city);
