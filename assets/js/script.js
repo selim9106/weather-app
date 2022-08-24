@@ -160,7 +160,11 @@ localisation.getCurrentPosition(success, error);
 
 
 let searchField = getDomelement("#searchfield");
-let submit = getDomelement("form");
+let form = getDomelement("form");
+let searchnav = getDomelement(".header__nav__list")
+
+
+
 function initApp() {
 
     // currentlocation.value = localisation;
@@ -204,12 +208,17 @@ const getCity = async searchText => {
 async function suggestCity (searchedcity) {
     let cities = await getCity(searchedcity)
     let citiesArray = cities._embedded["city:search-results"]
+    console.log(citiesArray)
 
         if (!document.getElementById("suggestions")) {
-        suggestions = document.createElement("div")
-        suggestions.id ="suggestions";
-        submit.appendChild(suggestions)
+        suggestions = document.createElement("select")
+        suggestions.classList.add("header__nav__list__suggestions")
+        suggestions.id = "suggestions"
+        form.appendChild(suggestions)
+
     }
+
+
 
     let results = document.getElementById("suggestions");
     results.innerHTML = ""
@@ -218,7 +227,7 @@ async function suggestCity (searchedcity) {
 
     for (let city of citiesArray) {
         suggestions.innerHTML += 
-        `<div class="suggestions__item">${city.matching_full_name}</div>`
+        `<option class="suggestions__item" value="${city}">${city.matching_full_name}</option>`
     }
 
 }

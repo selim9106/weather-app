@@ -463,6 +463,9 @@ body {
   flex-direction: row;
   justify-content: flex-end;
 }
+.header__nav__form {
+  margin-top: 1rem;
+}
 .header__nav__list {
   display: flex;
   flex-direction: row;
@@ -472,6 +475,7 @@ body {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+  max-width: 50vw;
   list-style-type: none;
   padding: 0.3rem;
   background-color: rgba(240, 255, 255, 0.288);
@@ -521,6 +525,10 @@ body {
   outline: none;
   height: 15px;
   width: 15px;
+}
+.header__nav__list__suggestions {
+  position: absolute;
+  width: 100%;
 }
 
 .main {
