@@ -1,8 +1,16 @@
+/** 
+ *function to select DOM element (id's, class, tag) */
+
+ function getDomelement (selector) {
+    return document.querySelector(selector)
+}
+
+
 // -----------------------------------burgermenu-------------------------------------
 
-let asidemobile = document.querySelector(".aside")
-let burgermenu = document.querySelector("#bgmenu");
-let closebgbutton = document.querySelector("#closebgmenu");
+let asidemobile = getDomelement(".aside")
+let burgermenu = getDomelement("#bgmenu");
+let closebgbutton = getDomelement("#closebgmenu");
 let menulinks = document.querySelectorAll(".aside__menu__item");
 
 burgermenu.onclick = openBgmenu;
@@ -19,28 +27,30 @@ function closeBgMenu() {
 };
 
 
-
 // ------------------------------------- API --------------------------
 
-let mainContent = document.querySelector(".main");
-
-function getDomelement (selector) {
-    return document.querySelector(selector)
-}
-
-let currentTemp = document.querySelector(".todayweather__temp__degrees");
-let tempValue = document.querySelector(".degreevalue");
-
-let unit = document.querySelector("#toggleunit");
-let todaywicon = document.querySelector(".todayweather__picture__icon");
-
-let currentTempdetails = document.querySelector(".todayweather__picture__caption");
 
 
 
+let mainContent = getDomelement(".main");
 
+let currentTemp = getDomelement(".todayweather__temp__degrees");
+let tempValue = getDomelement(".degreevalue");
+
+let unit = getDomelement("#toggleunit");
+let todaywicon = getDomelement(".todayweather__picture__icon");
+
+let currentTempdetails = getDomelement(".todayweather__picture__caption");
+
+
+/**
+ * 
+ * @param {string} city inputcity
+ * @returns 
+ */
 async function getWeather (city) {
     const apiKey = "cccc6ab1922b222363df0abbd37784ca";
+    // let lat = getCurrentPosition
     // let lat = document.getElementById('latitude').value;
     // let lon = document.getElementById('longitude').value;
     // let url = `http://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}`
@@ -48,7 +58,6 @@ async function getWeather (city) {
     let lang = 'en';
     let units = 'metric';
     const apiurl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&lang=${lang}&units=${units}&cnt=1&appid=${apiKey}`;
-
     const response = await fetch(apiurl)
     const json = await response.json()
     return json;
@@ -58,7 +67,7 @@ async function getWeather (city) {
 
 
 
-async function displayCurrentweather (inputcity) {
+async function displayCityweather (inputcity) {
 
     let details = await getWeather(inputcity);
     console.log(details);
@@ -135,8 +144,6 @@ localisation.getCurrentPosition(success, error);
     const crd = pos.coords;
     let lat = crd.latitude;
     let long = crd.longitude;
-    console.log(lat, long);
-
     let parslat = Math.round(lat*10)/10;
     let parslong = Math.round(long*10)/10;
     console.log(parslat, parslong);
@@ -147,23 +154,74 @@ localisation.getCurrentPosition(success, error);
   };
 
 
-let currentlocation = getDomelement("#location");
+// let currentlocation = getDomelement("#location");
 
 //  fonction on load
+
+
+let searchField = getDomelement("#searchfield");
+let submit = getDomelement("form");
 function initApp() {
 
-    let currentlocation.value = localisation
+    // currentlocation.value = localisation;
+    // console.log(currentlocation.value);
 
-    let submit = document.querySelector("form");
-    let searchField = document.querySelector("#searchfield");
+    
     submit.addEventListener("submit", function(e) {
         // line below prevent from reloading page every function call
         e.preventDefault();
         let city = searchField.value;
-        displayCurrentweather(city);
+        displayCityweather(city);
     })
 
 };
 
 
 initApp()
+
+
+
+
+/**
+ * 
+ * @param {String}
+ * @return {Promise<Array>} result array search
+ * 
+ * Get the city input field
+ */
+
+const getCity = async searchText => {
+    let cityapiurl = `https://api.teleport.org/api/cities/?search=${searchText}`
+    let result = await fetch (cityapiurl)
+    let cities = await result.json();
+    return cities
+};
+
+/**
+ * Autocomplete search field
+ */
+
+async function suggestCity (searchedcity) {
+    let cities = await getCity(searchedcity)
+    let citiesArray = cities._embedded["city:search-results"]
+
+        if (!document.getElementById("suggestions")) {
+        suggestions = document.createElement("div")
+        suggestions.id ="suggestions";
+        submit.appendChild(suggestions)
+    }
+
+    let results = document.getElementById("suggestions");
+    results.innerHTML = ""
+    console.log(results)
+
+
+    for (let city of citiesArray) {
+        suggestions.innerHTML += 
+        `<div class="suggestions__item">${city.matching_full_name}</div>`
+    }
+
+}
+
+searchField.addEventListener("input", () => suggestCity(searchField.value))
+
